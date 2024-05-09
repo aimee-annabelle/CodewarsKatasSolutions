@@ -4,52 +4,53 @@ class File {
     this._fileName = fullName.split(".").slice(0, -1).join(".");
     this._extension = fullName.split(".").slice(-1).toString();
     this._contents = contents;
-    this.words = contents.split("\n");
-    this.currentIndex = 0;
-    this.chars = contents.split("");
-    this.i = 0;
+    this._wordIndex = 0;
+    this._charIndex = 0;
   }
 
   get fullName() {
     return this._fullName;
   }
+
   get fileName() {
     return this._fileName;
   }
+
   get extension() {
     return this._extension;
   }
+
   getContents() {
     return this._contents;
   }
+
   write(str) {
     if (this._contents.length === 0) {
       this._contents += str;
     } else {
       this._contents += `\n${str}`;
     }
-    this.words = this._contents.split("\n");
-    this.currentIndex = 0;
   }
+
   gets() {
-    if (this.currentIndex < this.words.length) {
-      const word = this.words[this.currentIndex];
-      this.currentIndex++;
-      return word;
-    } else {
-      return undefined;
+    if (this._contents.length === 0) {
+      return "";
     }
+    const string = this._contents.split("\n")[this._wordIndex];
+    this._wordIndex++;
+    return string;
   }
+
   getc() {
-    if (this.i < this.chars.length) {
-      const char = this.chars[this.i];
-      this.i++;
-      return char;
-    } else {
-      return undefined;
+    if (this._contents.length === 0) {
+      return "";
     }
+    const char = this._contents[this._charIndex];
+    this._charIndex++;
+    return char;
   }
 }
+
 let example = new File("example.txt", "An example file");
 console.log(example.fullName === "example.txt", "log 1");
 console.log(example.fileName === "example", "log 2");
@@ -77,16 +78,14 @@ console.log(
     "An example file\nHello World\nThis is an example file provided to you by the Kata author\nThis example file is used as an example test case.",
   "log 12"
 );
-console.log(example.gets(), example.gets() === "An example file", "log 13");
-console.log(example.gets(), example.gets() === "Hello World", "log 14");
+console.log(example.gets() === "An example file", "log 13");
+console.log(example.gets() === "Hello World", "log 14");
 console.log(
-  example.gets(),
   example.gets() ===
     "This is an example file provided to you by the Kata author",
   "log 15"
 );
 console.log(
-  example.gets(),
   example.gets() === "This example file is used as an example test case.",
   "log 16"
 );
