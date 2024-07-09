@@ -7,3 +7,9 @@ export function generateShape(int: number): string {
   }
   return output;
 }
+
+/** How many are smaller than me?*/
+
+export function smaller(nums: number[]): number[] {
+  return nums.map((el,idx) => nums.filter((item,i) => i > idx && item < el).length)
+}
