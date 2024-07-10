@@ -4,6 +4,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.generateShape = generateShape;
 exports.smaller = smaller;
 exports.sumDigits = sumDigits;
+exports.arr2bin = arr2bin;
 function generateShape(int) {
     let output = "";
     for (let i = 1; i <= int; i++) {
@@ -24,3 +25,19 @@ function sumDigits(n) {
         .map((el) => Number(el));
     return arr.reduce((curr, acc) => curr + acc);
 }
+// Arguments to Binary addition
+function arr2bin(arr) {
+    console.log(arr);
+    let sum = arr.reduce((acc, curr) => {
+        if (isNaN(parseInt(curr)) && !Number.isNaN(curr)) {
+            return acc + 0;
+        }
+        else {
+            return acc + curr;
+        }
+    }, 0);
+    console.log(sum.toString(2));
+    return sum.toString(2);
+}
+arr2bin([NaN]);
+arr2bin([9, NaN]);

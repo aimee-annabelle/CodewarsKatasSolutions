@@ -18,10 +18,13 @@ function isSumOfCubes(s: string): string {
   console.log(flattened);
 
   flattened.map((s) => {
-    let sum = s.split('').map(element => +element).reduce((curr,acc)=> curr+Math.pow(acc,3))
+    let sum = s
+      .split("")
+      .map((element) => +element)
+      .reduce((curr, acc) => curr + Math.pow(acc, 3));
     console.log(sum);
-    
-    if (parseInt(s) ===sum) result += s + " ";
+
+    if (parseInt(s) === sum) result += s + " ";
   });
   console.log(result);
 
@@ -32,6 +35,23 @@ function isSumOfCubes(s: string): string {
 //   "Once upon a midnight dreary, while100 I pondered, 9026315weak and weary -827&()"
 // );
 
-isSumOfCubes(
-  "&z371 upon 407298a --- dreary, ###100.153 I thought, 9926315strong and weary -127&() 1"
-);
+// isSumOfCubes(
+//   "&z371 upon 407298a --- dreary, ###100.153 I thought, 9926315strong and weary -127&() 1"
+// );
+
+// Difference Of Squares
+
+function differenceOfSquares(n: number): number {
+  let arr: number[] = [];
+  for (let i = 1; i <= n; i++) {
+    arr.push(i);
+  }
+  let squareSum = Math.pow(
+    arr.reduce((curr, acc) => curr + acc),
+    2
+  );
+  let sumSquare = arr.reduce((curr, acc) => curr + Math.pow(acc, 2));
+  return squareSum - sumSquare;
+}
+
+console.log(differenceOfSquares(5));
