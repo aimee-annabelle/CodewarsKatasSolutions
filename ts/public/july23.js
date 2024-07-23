@@ -16,8 +16,8 @@ function humanReadable(seconds) {
     secs = secs % 60;
     return `${hours > 10 ? hours : '0' + hours}:${mins > 10 ? mins : '0' + mins}:${secs > 10 ? secs : '0' + secs}`;
 }
-console.log(humanReadable(0)); // '00:00:00
-console.log(humanReadable(5)); // '00:00:05'
-console.log(humanReadable(60)); // '00:01:00'
-console.log(humanReadable(86399)); // '23:59:59'
-console.log(humanReadable(359999)); // '99:59:59'
+humanReadable(0); // '00:00:00
+humanReadable(5); // '00:00:05'
+humanReadable(60); // '00:01:00'
+humanReadable(86399); // '23:59:59'
+humanReadable(359999); // '99:59:59'
